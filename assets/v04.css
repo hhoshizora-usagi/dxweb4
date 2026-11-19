@@ -1,0 +1,64 @@
+/* dxweb2 04 ライト＆ライン：明るいヒーロー／左から色が満ちるボタン／下線つきの文字リンク／スマホは下に固定の相談バー */
+.topbar{display:none}
+header.site{border-bottom:0;box-shadow:inset 0 -3px 0 var(--accent)}
+.btn-accent,.btn-main,.btn-cta{border-radius:4px;background-repeat:no-repeat;background-size:0 100%;transition:background-size .4s cubic-bezier(.2,.7,.2,1),color .2s}
+.btn-accent,.btn-cta{background-image:linear-gradient(var(--accent-dark),var(--accent-dark))}
+.btn-main{background-image:linear-gradient(var(--main-deep),var(--main-deep))}
+.btn-accent:hover,.btn-main:hover,.btn-cta:hover{background-size:100% 100%;transform:none}
+.btn-accent:hover,.btn-cta:hover{background-color:var(--accent);background-image:linear-gradient(var(--accent-dark),var(--accent-dark))}
+.btn-main:hover{background-color:var(--main);background-image:linear-gradient(var(--main-deep),var(--main-deep))}
+.btn-ghost,.btn-line{min-width:0;padding:10px 2px;border:0;border-bottom:2px solid currentColor;border-radius:0;background:none}
+.btn-ghost:hover,.btn-line:hover{background:none;color:inherit}
+.btn-line{color:var(--main)}
+.hero{background:var(--surface);min-height:620px}
+.hero-copy{color:var(--text)}
+.hero-copy .label{color:var(--sub)}
+.hero-copy h1{color:var(--text)}
+.hero-copy h1 em{color:var(--main)}
+.hero-copy p{color:var(--text-sub);opacity:1}
+.hero-copy .btn-ghost{color:var(--main)}
+.hero-copy .btns{align-items:center;gap:28px}
+.hero-visual{margin:28px 28px 28px 0;border-radius:24px}
+.hero-visual::before{display:none}
+.hero-visual .slide{transition:opacity 1.6s ease,transform 10s linear}
+.hero-visual .slide.on{transform:scale(1.08)}
+.stats>div{border-radius:0;border:0;border-top:3px solid var(--main);background:transparent}
+.card{box-shadow:none;border:1px solid var(--line);transition:border-color .3s,transform .35s}
+.card:hover{border-color:var(--main)}
+.card .num{background:var(--surface);color:var(--main);border:2px solid var(--main);box-shadow:none}
+.program{box-shadow:none;border:1px solid var(--line)}
+.route::before{background:var(--main);height:2px}
+.cta .btns{align-items:flex-start}
+.float-cta{display:none}
+/* メリハリ：見出しを太く・数字を大きく */
+.h2{font-weight:800}
+.stats b{font-size:44px}
+/* メリハリ：濃い色の帯セクション（#about） */
+#about{background:var(--main-deep);color:var(--on-main)}
+#about .label{color:var(--accent)}
+#about .lead,#about p{color:color-mix(in oklch,var(--on-main) 82%,transparent)}
+#about h2,#about h3{color:var(--on-main)}
+#about .intro-statement{color:var(--on-main)}
+#about .intro-statement span,#about .stats b{color:var(--accent)}
+#about .stats>div{border-top-color:var(--accent)}
+#about .stats span{color:color-mix(in oklch,var(--on-main) 75%,transparent)}
+/* 静と動：ボタンやカードは動かさず静かに、写真だけをゆっくり動かす */
+.btn::after,.btn-cta::after{display:none}
+.card:hover{transform:none}
+.card .img{transform-origin:left bottom;transition:transform 1.4s cubic-bezier(.2,.7,.2,1),filter .6s}
+.card:hover .img{transform:scale(1.06)}
+.program .pimg{transition:transform 1.6s cubic-bezier(.2,.7,.2,1),filter .6s}
+.program:hover .pimg{transform:scale(1.05)}
+.cta::before{animation:imgDrift 28s ease-in-out infinite alternate}
+@keyframes imgDrift{from{transform:scale(1.04) translate(0,0)}to{transform:scale(1.14) translate(-2%,-2%)}}
+@media(hover:hover) and (pointer:fine){.card:hover{box-shadow:none}}
+@media (max-width:1024px){
+  .hero-visual{margin:16px 16px 0;border-radius:18px}
+  .route::before{background:var(--main);width:2px}
+}
+@media (max-width:640px){
+  body{padding-bottom:64px}
+  .float-cta{display:flex;align-items:center;justify-content:center;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:95;height:64px;background:var(--accent);color:var(--on-accent);font-weight:700;font-size:15px;box-shadow:0 -6px 20px color-mix(in oklch,var(--main) 15%,transparent);transform:translateY(100%);transition:transform .3s}
+  .float-cta.show{transform:none}
+  .pagetop{bottom:80px}
+}
